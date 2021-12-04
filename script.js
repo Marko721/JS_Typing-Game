@@ -54,6 +54,26 @@ function addWordToDom() {
 
 addWordToDom();
 
+// Update score
+function updateScore() {
+  score++;
+  scoreEl.innerHTML = score;
+}
+
+// Event listeners
+
+text.addEventListener("input", (e) => {
+  const insertedText = e.target.value;
+
+  if (insertedText === randomWord) {
+    addWordToDom();
+    updateScore();
+
+    // Clear
+    e.target.value = "";
+  }
+});
+
 // settingsBtn.addEventListener("click", () => {
 //   settings.classList.toggle("hide");
 // });
