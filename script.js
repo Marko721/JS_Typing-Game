@@ -12,9 +12,7 @@ const settings = document.getElementById("settings");
 const settingsForm = document.getElementById("settings-form");
 const difficultySelect = document.getElementById("difficulty");
 
-const words = [];
-
-const getTodos = async () => {
+const getWords = async () => {
   const response = await fetch(
     "https://random-word-api.herokuapp.com/word?number=200&swear=0 "
   ); // await keywards stalls JS from assignint the value to the variable untill promise is resolved. Once the promise is resolved we can take the value form that response and assign to response variable
@@ -27,35 +25,12 @@ const getTodos = async () => {
   return data;
 };
 
-getTodos().then((data) => {
-  words = data;
+getWords().then((words) => {
+  console.log(words);
 });
 
-console.log(words);
-
 // // List of words for game
-// const words = [
-//   "sigh",
-//   "tense",
-//   "airplane",
-//   "ball",
-//   "pies",
-//   "juice",
-//   "warlike",
-//   "bad",
-//   "north",
-//   "dependent",
-//   "steer",
-//   "silver",
-//   "highfalutin",
-//   "superficial",
-//   "quince",
-//   "eight",
-//   "feeble",
-//   "admit",
-//   "drag",
-//   "loving",
-// ];
+// const words = ["cool", "future", "money", "cars"];
 
 // Init word
 let randomWord;
