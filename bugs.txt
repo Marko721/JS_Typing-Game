@@ -1,0 +1,1 @@
+When the input has more letters than the word on screen it displays an error

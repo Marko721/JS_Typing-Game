@@ -1,5 +1,6 @@
 // connect to a api to get random words ✅
-// when you type a letter perform a check to the word green if it's correct red orange if it's not
+// when you type a letter perform a check to the word green if it's correct red orange if it's not ✅
+
 // display 3 rows of 5 words so you can see ahead for faster typing
 "use strict";
 
@@ -38,6 +39,7 @@ const getWords = async () => {
 const getWord = () => {
   getWords().then((words) => {
     let word = words[Math.floor(Math.random() * words.length)];
+
     randomWord = word.split("");
     addWordToDom(randomWord);
   });
@@ -111,19 +113,17 @@ function gameOver() {
 text.addEventListener("input", (e) => {
   //check if the letter typed matches the next letter or not and color it
   let letters = e.target.value.split("");
-  console.log(letters);
-  console.log(randomWord);
 
   for (let i = 0; i < letters.length; i++) {
     if (randomWord[i] === letters[i]) {
-      randomWord[i].style.color = "green";
-      console.log("good");
+      word.childNodes[i].style.color = "lightgreen";
     } else {
-      console.log("nogood");
+      word.childNodes[i].style.color = "lightcoral";
     }
   }
 
   if (letters.join("") === randomWord.join("")) {
+    word.innerHTML = "";
     getWord();
     updateScore();
 
