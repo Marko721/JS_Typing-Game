@@ -1,4 +1,4 @@
-// connect to a api to get random words
+// connect to a api to get random words ✅
 // when you type a letter perform a check to the word green if it's correct red orange if it's not
 // display 3 rows of 5 words so you can see ahead for faster typing
 "use strict";
@@ -38,8 +38,8 @@ const getWords = async () => {
 const getWord = () => {
   getWords().then((words) => {
     let word = words[Math.floor(Math.random() * words.length)];
-    console.log(word);
-    addWordToDom(word);
+    randomWord = word.split("");
+    addWordToDom(randomWord);
   });
 };
 
@@ -48,7 +48,13 @@ getWord();
 // Add word to DOM
 function addWordToDom(str) {
   randomWord = str;
-  word.innerHTML = str;
+
+  // take the array of characters and display each character
+  randomWord.forEach((letter) => {
+    let letterInWord = document.createElement("span");
+    letterInWord.innerHTML = letter;
+    word.appendChild(letterInWord);
+  });
 }
 
 // Set difficulty to value in local storage or medium
@@ -77,7 +83,7 @@ function updateScore() {
 
 //Update time
 function updateTime() {
-  time--;
+  // time--;
   timeEl.innerHTML = time + "s";
 
   if (time === 0) {
@@ -103,9 +109,21 @@ function gameOver() {
 
 // Typing
 text.addEventListener("input", (e) => {
-  const insertedText = e.target.value;
+  //check if the letter typed matches the next letter or not and color it
+  let letters = e.target.value.split("");
+  console.log(letters);
+  console.log(randomWord);
 
-  if (insertedText === randomWord) {
+  for (let i = 0; i < letters.length; i++) {
+    if (randomWord[i] === letters[i]) {
+      randomWord[i].style.color = "green";
+      console.log("good");
+    } else {
+      console.log("nogood");
+    }
+  }
+
+  if (letters.join("") === randomWord.join("")) {
     getWord();
     updateScore();
 
@@ -117,7 +135,7 @@ text.addEventListener("input", (e) => {
     } else if (difficulty === "medium") {
       time += 3;
     } else {
-      time += 5;
+      time += 4;
     }
   }
 });
