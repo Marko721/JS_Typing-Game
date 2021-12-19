@@ -115,10 +115,14 @@ text.addEventListener("input", (e) => {
   let letters = e.target.value.split("");
 
   for (let i = 0; i < letters.length; i++) {
-    if (randomWord[i] === letters[i]) {
-      word.childNodes[i].style.color = "lightgreen";
+    if (letters.length <= randomWord.length) {
+      if (randomWord[i] === letters[i]) {
+        word.childNodes[i].style.color = "lightgreen";
+      } else {
+        word.childNodes[i].style.color = "lightcoral";
+      }
     } else {
-      word.childNodes[i].style.color = "lightcoral";
+      console.log("u exceeded the letters");
     }
   }
 
