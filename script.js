@@ -85,7 +85,7 @@ function updateScore() {
 
 //Update time
 function updateTime() {
-  // time--;
+  time--;
   timeEl.innerHTML = time + "s";
 
   if (time === 0) {
