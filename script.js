@@ -1,7 +1,7 @@
 // connect to a api to get random words ✅
 // when you type a letter perform a check to the word green if it's correct red orange if it's not ✅
 
-// display 3 rows of 5 words so you can see ahead for faster typing
+// display 3 rows of 5 words so you can see ahead for faster typing - next to do
 "use strict";
 
 const word = document.getElementById("word");
